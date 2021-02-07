@@ -19,7 +19,7 @@ HVS: Hierarchical Graph Structure Based on Voronoi Diagrams for Solving Approxim
 
 ### Compile On Ubuntu
 
-About HNSW
+Complie HNSW
 
 ```shell
 $ cd hnsw/
@@ -28,7 +28,7 @@ cmake ..
 make 
 ```
 
-About NSG
+Compile HVS (based on NSG)
 
 ```shell
 $ cd nsg-master/
@@ -37,7 +37,7 @@ $ cmake ..
 $ make
 ```
 
-## Running commands
+## Commands
 
 * `K` is the value of top-K
 * NSG parameters `L`, `R` and `C` were set to 50, 60 ,500 in our experiments
