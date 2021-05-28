@@ -35,11 +35,11 @@ make
 
 Build HVS index
 ```shell
-./hnsw/build/main ${dPath}.ds ${qPath}.q ${n} ${d} ${T} ${qn} ${K} ${L}
+./hnsw/build/main ${dPath}.ds nullptr ${n} ${d} ${T} -1 ${delta} -1
 ```
 Search in HVS
 ```shell
-./hnsw/build/main ${dPath}.ds nullptr ${n} ${d} ${T} -1 ${delta} -1
+./hnsw/build/main ${dPath}.ds ${qPath}.q ${n} ${d} ${T} ${qn} ${K} ${L}
 ```
 
 ## A running example (ImageNet)
