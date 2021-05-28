@@ -14,12 +14,12 @@ HVS: Hierarchical Graph Structure Based on Voronoi Diagrams for Solving Approxim
 
 ### Datasets and query sets
 
-* Deep (https://yadi.sk/d/11eDCm7Dsn9GA)
+* Tiny80M (https://drive.google.com/file/d/1PzW9cqi8VbzH9Bu_7UDWAXjA2DlBorG3/view?usp=sharing)
 * Other real datasets (https://www.cse.cuhk.edu.hk/systems/hash/gqr/datasets.html)
 
 ### Compile On Ubuntu
 
-Complie HNSW
+Complie HVS (based on NSW)
 
 ```shell
 $ cd hnsw/
@@ -27,24 +27,26 @@ $ mkdir build/ && cd build/
 cmake ..
 make 
 ```
-
-Compile HVS (based on NSG)
-
-```shell
-$ cd nsg-master/
-$ mkdir build/ && cd build/
-$ cmake ..
-$ make
-```
-
 ## Commands
 
-* `K` is the value of top-K
-* NSG parameters `L`, `R` and `C` were set to 50, 60 ,500 in our experiments
+* `K` is the value of top-K, `L` is the value of efsearch and `qn` is the size of query set
 * `T` and `delta` are user-specified parameters of HVS
+* The data set, query set and the ground_truth set are stored in ${dPath}.ds, ${qPath}.q and truth.gt
 
+Build HVS index
 ```shell
-$ ./hnsw/build/main ${dataset} ${datasize} ${dimension} ${T} ${delta}
-$ ./nsg-master/build/tests/test_nsg_index ${dataset} data_graph.fvecs ${L} ${R} ${C} data_index.fvecs ${T}
-$ ./nsg-master/build/tests/test_nsg_optimized ${dataset} ${queryset} data_index.fvecs ${T} ${K} ${groundtruthset}
+./hnsw/build/main ${dPath}.ds ${qPath}.q ${n} ${d} ${T} ${qn} ${K} ${L}
+```
+Search in HVS
+```shell
+./hnsw/build/main ${dPath}.ds nullptr ${n} ${d} ${T} -1 ${delta} -1
+```
+
+## A running example (ImageNet)
+* Donwload the dataset, query set and the ground truth set of ImageNet from the following link
+https://drive.google.com/file/d/1WV78sZT1j1oz-GoZTQdyKaNQgulRLe2O/view?usp=sharing
+* Put all three files in the main folder
+* Run the script
+```shell
+bash run_image.sh
 ```
