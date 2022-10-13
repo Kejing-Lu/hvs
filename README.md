@@ -31,7 +31,7 @@ make
 
 * `K` is the value of top-K, `L` is the value of efsearch and `qn` is the size of query set
 * `T` and `delta` are user-specified parameters of HVS
-* The data set, query set and the ground_truth set are stored in ${dPath}.ds, ${qPath}.q and truth.gt
+* The data set, query set and the ground_truth set are stored in dPath.ds, qPath.q and truth.gt
 
 Build HVS index
 ```shell
